@@ -40,7 +40,7 @@ const projects: ProjectData[] = [
       { src: htmlLogo, title: 'HTML' },
       { src: css3Logo, title: 'CSS' },
     ],
-    githubLink: 'https://github.com/pedruamerico/portfolio-site.git',
+    githubLink: 'https://github.com/pedruamerico/portfolio-site.git ',
     liveLink: 'https://pedruamerico.vercel.app',
   },
   {
