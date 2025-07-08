@@ -6,10 +6,7 @@ const AboutSection: React.FC = () => {
       <h2 className="sobre-titulo">Sobre Mim</h2>
       <div className="sobre-caixa">
         <p className="sobre-paragrafo">
-          Sou Pedro Américo, desenvolvedor com foco em DevOps e desenvolvimento web. Tenho experiência com
-          automação de deploys, CI/CD, infraestrutura em OpenShift, e desenvolvimento com Python, JavaScript e
-          React. Busco sempre criar soluções robustas, eficientes e seguras. Atualmente curso Sistemas de
-          Informação e atuo na Secretaria de Estado de Fazenda do RJ.
+          Minhas habilidades técnicas abrangem o desenvolvimento Fullstack, com expertise em linguagens como JavaScript, Python e Java. Domino frameworks modernos como React, TypeScript e Tailwind CSS para construir interfaces dinâmicas e responsivas. Além disso, possuo experiência sólida em infraestrutura e operações com Docker e Kubernetes, e em sistemas de banco de dados, incluindo PostgreSQL, MySQL e MongoDB, garantindo a construção de soluções robustas e eficientes.
         </p>
       </div>
     </section>
