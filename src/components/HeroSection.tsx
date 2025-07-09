@@ -22,7 +22,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ typedStrings }) => {
 
   useEffect(() => {
     const options = {
-      strings: typedStrings || ["Fullstack Developer", "Devops Analyst", "Software Enginer"],
+      strings: typedStrings || ["Desenvolvedor Fullstack", "Analista de DevOps", "Automação de Processos com Python"],
       typeSpeed: 140,
       backSpeed: 80,
       backDelay: 1500,

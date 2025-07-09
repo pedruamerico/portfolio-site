@@ -11,6 +11,9 @@ function Navbar() {
           <a href="#sobre" className="menu-link">Sobre</a>
         </li>
         <li>
+          <a href="#servicos" className="menu-link">Serviços</a>
+        </li>
+        <li>
           <a href="#projetos" className="menu-link">Projetos</a>
         </li>
         <li>
