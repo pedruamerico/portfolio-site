@@ -1,8 +1,10 @@
 import React from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const AboutSection: React.FC = () => {
+  const { ref, revealed } = useScrollReveal();
   return (
-    <section id="sobre" className="sobre">
+    <section id="sobre" ref={ref} className={`sobre fade-in${revealed ? ' revealed' : ''}`}> 
       <h2 className="sobre-titulo">Sobre Mim</h2>
       <div className="sobre-caixa">
         <p className="sobre-paragrafo">

@@ -1,4 +1,3 @@
-// Conteúdo de src/components/HeroSection.tsx
 import React, { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import pedroImage from '../assets/images/pedro.jpg';
@@ -12,6 +11,7 @@ import kubernetesLogo from '../assets/frameworks/kubernetes.png';
 import postgresqlLogo from '../assets/frameworks/postgresql.png';
 import pythonLogo from '../assets/frameworks/python.png';
 import reactLogo from '../assets/frameworks/react.png';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface HeroSectionProps {
   typedStrings?: string[];
@@ -19,10 +19,11 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ typedStrings }) => {
   const typedElement = useRef<HTMLSpanElement>(null);
+  const { ref, revealed } = useScrollReveal();
 
   useEffect(() => {
     const options = {
-      strings: typedStrings || ["Fullstack Developer", "Devops Analyst", "Software Enginer"],
+      strings: typedStrings || ["Desenvolvedor Fullstack", "Analista de DevOps", "Automação de Processos com Python"],
       typeSpeed: 140,
       backSpeed: 80,
       backDelay: 1500,
@@ -39,7 +40,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ typedStrings }) => {
   }, [typedStrings]);
 
   return (
-    <main id="inicio" className="cabecalho">
+    <main id="inicio" ref={ref} className={`cabecalho fade-in${revealed ? ' revealed' : ''}`}> 
       <a href="https://github.com/pedruamerico" target="_blank" className="foto-perfil-wrapper">
         <img src={pedroImage} alt="Foto principal" className="foto-perfil" />
       </a>

@@ -1,3 +1,5 @@
+// src/types.ts
+
 export interface TechIcon {
   src: string;
   title: string;
@@ -34,5 +36,22 @@ export interface AboutSectionProps {
 }
 
 export interface ContactSectionProps {
+  delay?: string;
+}
+
+export interface ServiceCardProps {
+  iconClass: string;
+  title: string;
+  description: string;
+}
+
+export interface ServiceData {
+  id: number;
+  iconClass: string;
+  title: string;
+  description: string;
+}
+
+export interface ServicesSectionProps {
   delay?: string;
 }
