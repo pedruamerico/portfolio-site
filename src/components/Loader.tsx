@@ -2,26 +2,29 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Loader.css';
 
 const phrases = [
-  'Carregando dependências...',
-  'Compilando código...',
-  'Gerando componentes...',
-  'Construindo interface...',
-  'Renderizando pixels...',
-  'Otimizando performance...',
-  'Preparando deploy...',
-  'Testando funções...',
-  'Explorando APIs...',
-  'Montando layout...',
-  'Refatorando ideias...',
-  'Debugando bugs...',
-  'Pixelizando criatividade...'
+  'Transformando café em código...',
+  'Desenvolvendo soluções criativas...',
+  'Automatizando tarefas tediosas...',
+  'Refatorando ideias inovadoras...',
+  'Construindo experiências digitais...',
+  'Testando limites da criatividade...',
+  'Otimizando cada pixel...',
+  'Explorando novas tecnologias...',
+  'Debugando o impossível...',
+  'Montando portfólio com paixão...',
+  'Compilando sonhos...',
+  'Renderizando futuro...',
+  'Deployando conquistas...'
 ];
 
-function getNextRandomIdx(currentIdx, arrLength) {
-  let nextIdx = Math.floor(Math.random() * arrLength);
-  if (nextIdx === currentIdx) {
-    nextIdx = (nextIdx + 1) % arrLength;
+
+function getNextUniqueIdx(usedIdxs: number[], arrLength: number) {
+  const available = [];
+  for (let i = 0; i < arrLength; i++) {
+    if (!usedIdxs.includes(i)) available.push(i);
   }
+  if (available.length === 0) return null;
+  const nextIdx = available[Math.floor(Math.random() * available.length)];
   return nextIdx;
 }
 
@@ -29,15 +32,18 @@ interface LoaderProps {
   duration?: number;
 }
 
+
 const Loader: React.FC<LoaderProps> = ({ duration = 3000 }) => {
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [progress, setProgress] = useState(0);
+  // Remover estado global de frases usadas
   const animationRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
     startTimeRef.current = null;
     let lastPhraseChange = 0;
+    let usedIdxs: number[] = [0];
     const phraseInterval = Math.max(1200, duration / phrases.length);
     function animate(ts: number) {
       if (startTimeRef.current === null) {
@@ -49,7 +55,14 @@ const Loader: React.FC<LoaderProps> = ({ duration = 3000 }) => {
       let percent = Math.min(100, Math.floor((elapsed / duration) * 100));
       setProgress(percent);
       if (ts - lastPhraseChange > phraseInterval && percent < 100) {
-        setPhraseIdx(idx => getNextRandomIdx(idx, phrases.length));
+        let nextIdx = getNextUniqueIdx(usedIdxs, phrases.length);
+        if (nextIdx === null) {
+          usedIdxs = [0];
+          setPhraseIdx(0);
+        } else {
+          usedIdxs.push(nextIdx);
+          setPhraseIdx(nextIdx);
+        }
         lastPhraseChange = ts;
       }
       if (percent < 100) {
