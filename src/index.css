@@ -5,6 +5,7 @@
     font-family: 'Jetbrains Mono', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 4rem;
@@ -103,6 +104,7 @@ body {
     flex-direction: column;
     padding-top: 3rem;
     padding-bottom: var(--gap-between-sections);
+    animation: fadeInUp 1s forwards;
 }
 
 .foto-perfil-wrapper {
@@ -140,14 +142,14 @@ body {
     right: -10px;
     bottom: -10px;
     border-radius: 50%;
-    
+
     border: 3px solid var(--primaria);
-    box-shadow: 
+    box-shadow:
         0 0 5px var(--primaria),
         0 0 15px var(--primaria),
         0 0 30px var(--secundaria),
         0 0 45px var(--secundaria);
-    
+
     opacity: 0;
     transition: opacity 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
     z-index: 1;
@@ -155,11 +157,11 @@ body {
 
 .foto-perfil-wrapper:hover::before {
     opacity: 1;
-    box-shadow: 
-        0 0 8px var(--primaria),      
-        0 0 25px var(--primaria),     
-        0 0 50px var(--secundaria),   
-        0 0 70px var(--secundaria);   
+    box-shadow:
+        0 0 8px var(--primaria),
+        0 0 25px var(--primaria),
+        0 0 50px var(--secundaria),
+        0 0 70px var(--secundaria);
 }
 
 h1 {
@@ -211,25 +213,70 @@ h1 {
     transform: translateY(-5px) scale(1.1);
 }
 
-.fab.fa-python { color: var(--cor-python); }
-.fab.fa-js-square { color: var(--cor-js); }
-.fab.fa-html5 { color: var(--cor-html); }
-.fab.fa-css3-alt { color: var(--cor-css); }
-.fab.fa-react { color: var(--cor-react); }
-.fab.fa-java { color: var(--cor-java); }
-.fab.fa-php { color: var(--cor-php); }
-.fas.fa-wind { color: var(--cor-tailwind); }
-.fab.fa-docker { color: var(--cor-docker); }
-.fas.fa-database.postgresql-color { color: var(--cor-postgresql); }
-.fas.fa-database.mysql-color { color: var(--cor-mysql); }
-.fas.fa-leaf.mongodb-color { color: var(--cor-mongodb); }
-.fab.fa-typescript { color: var(--cor-typescript); }
-.sobre, .projetos, .contatos, .servicos {
+.fab.fa-python {
+    color: var(--cor-python);
+}
+
+.fab.fa-js-square {
+    color: var(--cor-js);
+}
+
+.fab.fa-html5 {
+    color: var(--cor-html);
+}
+
+.fab.fa-css3-alt {
+    color: var(--cor-css);
+}
+
+.fab.fa-react {
+    color: var(--cor-react);
+}
+
+.fab.fa-java {
+    color: var(--cor-java);
+}
+
+.fab.fa-php {
+    color: var(--cor-php);
+}
+
+.fas.fa-wind {
+    color: var(--cor-tailwind);
+}
+
+.fab.fa-docker {
+    color: var(--cor-docker);
+}
+
+.fas.fa-database.postgresql-color {
+    color: var(--cor-postgresql);
+}
+
+.fas.fa-database.mysql-color {
+    color: var(--cor-mysql);
+}
+
+.fas.fa-leaf.mongodb-color {
+    color: var(--cor-mongodb);
+}
+
+.fab.fa-typescript {
+    color: var(--cor-typescript);
+}
+
+.sobre,
+.projetos,
+.contatos,
+.servicos {
     padding: 3rem 2rem;
     margin-top: var(--gap-between-sections);
 }
 
-.sobre-titulo, .projetos-titulo, .contatos-titulo, .servicos-titulo {
+.sobre-titulo,
+.projetos-titulo,
+.contatos-titulo,
+.servicos-titulo {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 50px;
@@ -515,17 +562,21 @@ h1 {
     .navegacao {
         padding: 1rem;
     }
+
     .menu {
         gap: 1.5rem;
     }
+
     .cabecalho {
         padding-top: 2rem;
         padding-bottom: var(--gap-between-sections);
     }
+
     .foto-perfil-wrapper {
         width: 250px;
         height: 250px;
     }
+
     .foto-perfil-wrapper::before {
         top: -8px;
         left: -8px;
@@ -538,6 +589,7 @@ h1 {
             0 0 20px var(--secundaria),
             0 0 30px var(--secundaria);
     }
+
     .foto-perfil-wrapper:hover::before {
         box-shadow:
             0 0 5px var(--primaria),
@@ -545,84 +597,164 @@ h1 {
             0 0 30px var(--secundaria),
             0 0 45px var(--secundaria);
     }
+
     h1 {
         font-size: 2.5rem;
         margin-top: 20px;
         margin-bottom: 10px;
     }
+
     .cabecalho-subtitulo {
         font-size: 1.2rem;
     }
+
     .icones-frameworks {
         gap: 15px;
         margin-top: 30px;
     }
+
     .icones-frameworks-row {
         gap: 1rem;
         width: calc(5 * 1.8em + 4 * 1rem);
     }
+
     .icones-frameworks img.framework-logo {
         height: 1.8em;
         width: 1.8em;
         object-fit: contain;
     }
+
     .icones-frameworks i {
         font-size: 1.8em;
     }
+
     .sobre {
         padding: 2rem 1.5rem;
         margin-top: var(--gap-between-sections);
     }
+
     .sobre-titulo {
         font-size: 2.5rem;
         margin-bottom: 30px;
     }
+
     .sobre-caixa {
         padding: 1.5rem;
         backdrop-filter: blur(5px);
     }
+
     .sobre-paragrafo {
         font-size: 1rem;
         text-align: center;
         line-height: 1.5;
     }
+
     .projetos {
         padding: 4rem 1.5rem;
         margin-top: var(--gap-between-sections);
     }
+
     .projetos-titulo {
         font-size: 2rem;
         margin-bottom: 30px;
     }
+
     .contatos {
         padding: 4rem 1.5rem;
         margin-top: var(--gap-between-sections);
     }
+
     .contatos-titulo {
         font-size: 2rem;
         margin-bottom: 30px;
     }
+
     .formulario-contato {
         padding: 1.5rem;
     }
 }
 
+
+.theme-light {
+  .sobre-descricao,
+  .sobre-card p,
+  .sobre-paragrafo {
+    color: #222 !important;
+    font-weight: 500 !important;
+  }
+
+  .sobre-titulo,
+  .servicos-titulo,
+  .projetos-titulo,
+  .contatos-titulo {
+    color: #222 !important;
+  }
+
+  .sobre-card,
+  .service-card,
+  .projetos-card,
+  .formulario-contato {
+    background: #fff !important;
+    color: #111 !important;
+    border: 2px solid #222 !important;
+    box-shadow: none !important;
+  }
+
+  .service-card h3,
+  .projetos-card h3 {
+    color: #222 !important;
+  }
+  .service-card p,
+  .projetos-card p {
+    color: #222 !important;
+  }
+
+  .navegacao {
+    background: #fff !important;
+  }
+  .menu-link {
+    color: #222 !important;
+  }
+}
+
 @keyframes typed-cursor-blink {
+
     0%,
     100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0;
     }
 }
 
 @keyframes flutuar {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20%);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 1s, transform 1s;
+}
+
+.fade-in.revealed {
+    opacity: 1;
+    transform: none;
+}
+
+@keyframes fadeInLeft {
+    to {
+        opacity: 1;
+        transform: none;
     }
 }

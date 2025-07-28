@@ -1,0 +1,37 @@
+.theme-toggle-container {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  z-index: 10001;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.theme-icon-svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  transition: filter 0.2s;
+  filter: drop-shadow(0 1px 2px #222);
+}
+
+.theme-dark {
+  background: #121212 !important;
+  color: #fff !important;
+}
+.theme-light {
+  background: #f7f7f7 !important;
+  color: #111 !important;
+}
+
+.theme-light .card, .theme-light .card-section {
+  background: transparent !important;
+  color: #111 !important;
+  border: 2px solid #222 !important;
+  box-shadow: none !important;
+}
+

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const ContactSection: React.FC = () => {
+  const { ref, revealed } = useScrollReveal();
   const [nome, setNome] = useState<string>('');
   const [mensagem, setMensagem] = useState<string>('');
 
@@ -11,7 +13,7 @@ const ContactSection: React.FC = () => {
   const emailLink = `mailto:${emailAddress}?subject=Contato%20Portfólio%20-%20Portfólio`;
 
   return (
-    <section id="contatos" className="contatos">
+    <section id="contatos" ref={ref} className={`contatos fade-in${revealed ? ' revealed' : ''}`}>
       <h2 className="contatos-titulo">Entre em contato</h2>
       <div className="contatos-links">
         <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="botao-contato">

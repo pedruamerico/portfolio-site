@@ -1,5 +1,5 @@
 import React from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import ServiceCard from './ServiceCard';
 import { ServiceData, ServicesSectionProps } from '../types';
 
@@ -25,16 +25,13 @@ const services: ServiceData[] = [
 ];
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ delay }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const { ref, revealed } = useScrollReveal();
 
   return (
     <section 
       ref={ref} 
       id="servicos"
-      className={`servicos ${inView ? 'slide-in-right-reveal' : 'slide-in-right-hidden'}`} // Usando slide-in-right-reveal para um efeito diferente
+      className={`servicos fade-in${revealed ? ' revealed' : ''}`}
       style={{ transitionDelay: delay || '0s' }}
     >
       <h2 className="servicos-titulo">Serviços Ofertados</h2>

@@ -15,6 +15,7 @@ import postgresqlLogo from '../assets/frameworks/postgresql.png';
 import pythonLogo from '../assets/frameworks/python.png';
 import reactLogo from '../assets/frameworks/react.png';
 import tsLogo from '../assets/frameworks/typescript.png'
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface ProjectData {
   id: number;
@@ -59,8 +60,9 @@ const projects: ProjectData[] = [
 ];
 
 const ProjectsSection: React.FC = () => {
+  const { ref, revealed } = useScrollReveal();
   return (
-    <section id="projetos" className="projetos">
+    <section id="projetos" ref={ref} className={`projetos fade-in${revealed ? ' revealed' : ''}`}> 
       <h2 className="projetos-titulo">Meus Projetos</h2>
       <div className="projetos-caixa">
         {projects.map((project) => (
