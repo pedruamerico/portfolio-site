@@ -1,0 +1,13 @@
+.pa-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 20px var(--pa-gutter) 40px;
+  border-top: var(--pa-rule) solid var(--pa-line);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--pa-dim);
+}

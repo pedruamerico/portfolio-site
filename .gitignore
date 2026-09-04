@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# design handoff (referência local, não versionar)
+handoff-next/

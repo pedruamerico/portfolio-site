@@ -1,0 +1,55 @@
+.pa-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px var(--pa-gutter);
+  background: color-mix(in srgb, var(--pa-bg) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: var(--pa-rule) solid var(--pa-line);
+}
+
+.pa-header-brand {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.pa-header-dot { font-family: var(--font-mono), monospace; font-size: 11px; color: var(--pa-acc-text); }
+
+.pa-header-nav {
+  display: flex;
+  gap: 20px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--pa-dim);
+}
+.pa-header-nav a { color: inherit; }
+.pa-header-nav a:hover { color: var(--pa-acc-text); }
+
+.pa-header-controls { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+.pa-header-toggle {
+  padding: 7px 12px;
+  background: transparent;
+  color: var(--pa-ink);
+  border: var(--pa-rule-soft) solid var(--pa-line);
+  border-radius: var(--pa-radius);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+.pa-header-toggle:hover { border-color: var(--pa-acc); color: var(--pa-acc-text); }
+
+/* mobile: nav de seções sai, os dois toggles ficam (área de toque ≥ 44px) */
+@media (max-width: 900px) {
+  .pa-header-nav { display: none; }
+  .pa-header-toggle { padding: 13px 14px; }
+}

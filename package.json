@@ -1,5 +1,5 @@
 {
-  "name": "pedroamerico-react",
+  "name": "pedroamerico",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,15 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-intersection-observer": "^9.16.0",
-    "typed.js": "^2.1.0",
-    "zenscroll": "^4.0.2"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
@@ -26,6 +24,8 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.0",
     "vite": "^7.0.0"
   }
 }

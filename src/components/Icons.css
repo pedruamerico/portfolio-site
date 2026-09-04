@@ -1,0 +1,26 @@
+.pa-ico { display: block; color: var(--pa-acc); overflow: visible; }
+
+/* cada elemento gira no próprio centro. Não sobrescrever com transform-origin
+   em coordenadas de viewBox: sob fill-box elas resolvem contra a bounding box
+   do próprio nó e a engrenagem sai orbitando pra fora do ícone. */
+.pa-ico * { transform-box: fill-box; transform-origin: center; }
+
+.pa-ico-scan { animation: paScan 1.5s ease-in-out infinite; }
+.pa-ico-pulse { animation: paPulse 1.3s ease-in-out infinite; }
+.pa-ico-pulse-b { animation: paPulse 1.3s ease-in-out infinite; animation-delay: -.65s; }
+.pa-ico-blink { animation: paBlink 1s steps(1, end) infinite; }
+.pa-ico-blink-slow { animation: paBlink 1.6s steps(1, end) infinite; }
+.pa-ico-nudge { animation: paNudge 1.1s ease-in-out infinite; }
+.pa-ico-travel { animation: paTravel 1.1s linear infinite; }
+.pa-ico-dash { animation: paDashRun 1.4s linear infinite; }
+.pa-ico-led { animation: paPulse .8s ease-in-out infinite; }
+.pa-ico-led-b { animation: paPulse .8s ease-in-out infinite; animation-delay: -.27s; }
+.pa-ico-led-c { animation: paPulse .8s ease-in-out infinite; animation-delay: -.54s; }
+
+.pa-ico-rocket { animation: paRocket 1.3s ease-in-out infinite; }
+.pa-ico-flame { animation: paFlame .22s steps(2, end) infinite; transform-origin: top center; }
+.pa-ico-wheel { animation: paSpin .8s linear infinite; }
+.pa-ico-box-a { animation: paBox 1.6s linear infinite; }
+.pa-ico-box-b { animation: paBox 1.6s linear infinite; animation-delay: -.8s; }
+.pa-ico-gear-big { animation: paSpin 3.4s linear infinite; }
+.pa-ico-gear-small { animation: paSpinRev 2.4s linear infinite; }

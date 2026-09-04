@@ -1,0 +1,54 @@
+.pa-contact { padding: 10vh var(--pa-gutter) 6vh; }
+
+.pa-contact-list { max-width: 820px; margin-top: 26px; }
+
+/* todas as linhas no mesmo peso — o e-mail não é display */
+.pa-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: var(--pa-rule-soft) solid var(--pa-line);
+  padding: 18px 0;
+  font-size: clamp(18px, 1.9vw, 24px);
+  font-weight: 600;
+  letter-spacing: -.015em;
+  transition: color .2s ease, padding-left .2s ease;
+}
+a.pa-contact-row:hover { padding-left: 8px; }
+.pa-contact-discord { border-bottom: var(--pa-rule-soft) solid var(--pa-line); }
+
+.pa-contact-key {
+  width: 88px;
+  flex: none;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pa-dim);
+}
+
+.pa-contact-logo { width: 22px; height: 22px; flex: none; object-fit: contain; }
+
+.pa-contact-copy {
+  margin-left: auto;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--pa-dim);
+  border: var(--pa-rule-soft) solid var(--pa-line);
+  border-radius: var(--pa-radius);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+.pa-contact-copy:hover { border-color: var(--pa-acc); color: var(--pa-acc-text); }
+
+.pa-contact-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+@media (max-width: 900px) {
+  .pa-contact-row { flex-wrap: wrap; gap: 10px; font-size: 18px; }
+  .pa-contact-key { width: auto; }
+  .pa-contact-copy { margin-left: 0; }
+}

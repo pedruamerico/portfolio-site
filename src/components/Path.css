@@ -1,0 +1,30 @@
+.pa-path-arc { color: var(--pa-acc-text); }
+
+.pa-path-body { margin-top: 6vh; }
+
+.pa-path-lead {
+  grid-column: 1 / 8;
+  margin: 0;
+  font-size: clamp(20px, 2.4vw, 34px);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  text-wrap: pretty;
+}
+
+.pa-path-steps {
+  grid-column: 8 / 13;
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pa-path-steps li { font-size: 15px; line-height: 1.65; color: var(--pa-dim); text-wrap: pretty; }
+.pa-path-steps li[data-last] { color: var(--pa-ink); }
+
+@media (max-width: 900px) {
+  .pa-path-lead, .pa-path-steps { grid-column: 1 / -1; }
+  .pa-path-lead { font-size: clamp(20px, 6vw, 28px); }
+}

@@ -1,104 +1,116 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+/* Tela de carregamento — oito frases nerds, cada uma entrando por scramble
+   (letras embaralham até formar o texto) enquanto a barra de progresso sobe.
+   O texto é escrito direto no DOM via ref: animação por frame não deve
+   disparar re-render do React. */
+
+import { useEffect, useRef, useState } from 'react';
 import './Loader.css';
 
-const phrases = [
-  'Transformando café em código...',
-  'Desenvolvendo soluções criativas...',
-  'Automatizando tarefas tediosas...',
-  'Refatorando ideias inovadoras...',
-  'Construindo experiências digitais...',
-  'Testando limites da criatividade...',
-  'Otimizando cada pixel...',
-  'Explorando novas tecnologias...',
-  'Debugando o impossível...',
-  'Montando portfólio com paixão...',
-  'Compilando sonhos...',
-  'Renderizando futuro...',
-  'Deployando conquistas...'
+const PHRASES = [
+  'compilando café...',
+  'resolvendo dependências emocionais...',
+  'git blame no próprio código...',
+  "removendo console.log('aqui')...",
+  'esperando o build do Jenkins...',
+  'convertendo cafeína em commits...',
+  'kubectl get pods --watch-my-life...',
+  '3 sprints atrasado, seguindo o plano...',
 ];
 
+const CHARS = '!<>-_\\/[]{}=+*^?#·01';
 
-function getNextUniqueIdx(usedIdxs: number[], arrLength: number) {
-  const available = [];
-  for (let i = 0; i < arrLength; i++) {
-    if (!usedIdxs.includes(i)) available.push(i);
-  }
-  if (available.length === 0) return null;
-  const nextIdx = available[Math.floor(Math.random() * available.length)];
-  return nextIdx;
-}
-
-interface LoaderProps {
-  duration?: number;
-}
-
-
-const Loader: React.FC<LoaderProps> = ({ duration = 3000 }) => {
-  const [phraseIdx, setPhraseIdx] = useState(0);
-  const [progress, setProgress] = useState(0);
-  // Remover estado global de frases usadas
-  const animationRef = useRef<number | null>(null);
-  const startTimeRef = useRef<number | null>(null);
+export default function Loader() {
+  const [visible, setVisible] = useState(true);
+  const [done, setDone] = useState(false);
+  const [pct, setPct] = useState(0);
+  const phraseRef = useRef<HTMLSpanElement>(null);
+  const removed = useRef(false);
 
   useEffect(() => {
-    startTimeRef.current = null;
-    let lastPhraseChange = 0;
-    let usedIdxs: number[] = [0];
-    const phraseInterval = Math.max(1200, duration / phrases.length);
-    function animate(ts: number) {
-      if (startTimeRef.current === null) {
-        startTimeRef.current = ts;
-        setProgress(0);
-        lastPhraseChange = ts;
-      }
-      const elapsed = ts - startTimeRef.current;
-      let percent = Math.min(100, Math.floor((elapsed / duration) * 100));
-      setProgress(percent);
-      if (ts - lastPhraseChange > phraseInterval && percent < 100) {
-        let nextIdx = getNextUniqueIdx(usedIdxs, phrases.length);
-        if (nextIdx === null) {
-          usedIdxs = [0];
-          setPhraseIdx(0);
-        } else {
-          usedIdxs.push(nextIdx);
-          setPhraseIdx(nextIdx);
-        }
-        lastPhraseChange = ts;
-      }
-      if (percent < 100) {
-        animationRef.current = requestAnimationFrame(animate);
-      }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible(false);
+      return;
     }
-    animationRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+
+    let raf = 0;
+    const scramble = (el: HTMLElement, text: string) => {
+      const from = el.textContent || '';
+      const len = Math.max(from.length, text.length);
+      const queue = Array.from({ length: len }, (_, i) => {
+        const start = Math.floor(Math.random() * 14);
+        return {
+          f: from[i] || '',
+          t: text[i] || '',
+          start,
+          end: start + 6 + Math.floor(Math.random() * 16),
+          c: '',
+        };
+      });
+      let frame = 0;
+      const run = () => {
+        let out = '';
+        let complete = 0;
+        for (const q of queue) {
+          if (frame >= q.end) { complete++; out += q.t; }
+          else if (frame >= q.start) {
+            if (!q.c || Math.random() < 0.3) q.c = CHARS[Math.floor(Math.random() * CHARS.length)];
+            out += q.c;
+          } else out += q.f;
+        }
+        el.textContent = out;
+        if (complete < queue.length) { frame++; raf = requestAnimationFrame(run); }
+      };
+      cancelAnimationFrame(raf);
+      run();
     };
-  }, [duration, phrases.length]);
+
+    let pi = 0;
+    let p = 0;
+    if (phraseRef.current) scramble(phraseRef.current, PHRASES[0]);
+
+    const swap = window.setInterval(() => {
+      pi = (pi + 1) % PHRASES.length;
+      if (phraseRef.current) scramble(phraseRef.current, PHRASES[pi]);
+    }, 900);
+
+    const tick = window.setInterval(() => {
+      p = Math.min(100, p + Math.round(4 + Math.random() * 14));
+      setPct(p);
+      if (p >= 100 && !removed.current) {
+        removed.current = true;
+        window.clearInterval(tick);
+        window.clearInterval(swap);
+        setDone(true);
+        window.setTimeout(() => setVisible(false), 550);
+      }
+    }, 140);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearInterval(swap);
+      window.clearInterval(tick);
+    };
+  }, []);
+
+  if (!visible) return null;
 
   return (
-    <div className="loader-overlay">
-      <div className="loader-phrase">{phrases[phraseIdx]}</div>
-      <div className="loader-circle-container">
-        <svg className="loader-circle" width="80" height="80" viewBox="0 0 80 80">
-          <circle
-            className="loader-circle-bg"
-            cx="40" cy="40" r="35"
-            stroke="#ddd" strokeWidth="8" fill="none"
-          />
-          <circle
-            className="loader-circle-fg"
-            cx="40" cy="40" r="35"
-            stroke="#BD00FF" strokeWidth="8" fill="none"
-            strokeDasharray={(2 * Math.PI * 35).toFixed(2)}
-            strokeDashoffset={((2 * Math.PI * 35) * (1 - Math.max(0, Math.min(progress, 100)) / 100)).toFixed(2)}
-            transform="rotate(-90 40 40)"
-            style={{transition: 'stroke-dashoffset 0.2s linear'}}
-          />
+    <div className="pa-loader" data-done={done || undefined} aria-hidden="true">
+      <div className="pa-loader-inner">
+        <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" className="pa-loader-cup">
+          <path d="M22 14c-3 3.5 3 6.5 0 10" stroke="currentColor" strokeWidth={2.5} fill="none" strokeLinecap="round" className="pa-loader-steam" />
+          <path d="M32 11c-3 4 3 7.5 0 11.5" stroke="currentColor" strokeWidth={2.5} fill="none" strokeLinecap="round" className="pa-loader-steam" style={{ animationDelay: '-.7s' }} />
+          <path d="M42 14c-3 3.5 3 6.5 0 10" stroke="currentColor" strokeWidth={2.5} fill="none" strokeLinecap="round" className="pa-loader-steam" style={{ animationDelay: '-1.4s' }} />
+          <path d="M13 30h34v10a13 13 0 01-13 13h-8a13 13 0 01-13-13z" stroke="currentColor" strokeWidth={3} fill="none" />
+          <path d="M47 33h4a7 7 0 010 14h-4" stroke="currentColor" strokeWidth={3} fill="none" />
+          <path d="M9 58h44" stroke="currentColor" strokeWidth={3} fill="none" strokeLinecap="round" />
         </svg>
-        <div className="loader-percent">{progress}%</div>
+        <span ref={phraseRef} className="pa-loader-phrase" />
+        <div className="pa-loader-track">
+          <span className="pa-loader-fill" style={{ width: `${pct}%` }} />
+        </div>
+        <span className="pa-loader-pct">{pct}%</span>
       </div>
     </div>
   );
-};
-
-export default Loader;
+}

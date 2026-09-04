@@ -1,16 +1,47 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pedro Américo | Portfólio</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <title>Pedro Américo — Software do produto à produção</title>
+    <meta name="description" content="Engenheiro de software. Construo a aplicação, automatizo a entrega e mantenho o ambiente de pé — desenvolvimento, CI/CD e operação de clusters." />
+    <link rel="canonical" href="https://www.pedroamerico.com/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.pedroamerico.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.pedroamerico.com/?lang=en" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.pedroamerico.com" />
+    <meta property="og:site_name" content="Pedro Américo" />
+    <meta property="og:title" content="Pedro Américo — Software do produto à produção" />
+    <meta property="og:description" content="Desenvolvimento, CI/CD e operação de clusters. Projetos: Vikings League, Spotar e Log Pose." />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content="https://www.pedroamerico.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pedro Américo — portfólio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pedro Américo — Software do produto à produção" />
+    <meta name="twitter:description" content="Desenvolvimento, CI/CD e operação de clusters." />
+    <meta name="twitter:image" content="https://www.pedroamerico.com/og.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- tema e idioma salvos aplicados antes da primeira pintura, sem flash -->
+    <script>
+      try {
+        var t = localStorage.getItem('pa-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('pa-lang');
+        if (l === 'en') document.documentElement.lang = 'en';
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
