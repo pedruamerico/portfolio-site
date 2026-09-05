@@ -119,8 +119,7 @@ export const projects = [
     },
     stack: ["Next.js 16", "TypeScript", "Tailwind CSS", "Motion"],
     links: [
-      { label: "vikingsleague.com.br", url: "https://www.vikingsleague.com.br/", primary: true },
-      { label: { pt: "código no GitHub", en: "code on GitHub" }, url: "https://github.com/pedruamerico/vikings-league" },
+      { label: { pt: "código no GitHub", en: "code on GitHub" }, url: "https://github.com/pedruamerico/vikings-league", primary: true },
     ],
   },
   {
