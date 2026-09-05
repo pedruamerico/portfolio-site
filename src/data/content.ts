@@ -92,39 +92,8 @@ export const layers = [
 
 export const projects = [
   {
-    id: "vikings-league",
-    index: "01",
-    kicker: { pt: "PLATAFORMA", en: "PLATFORM" },
-    title: "Vikings League",
-    image: "/projects/vikings.webp",
-    imageAlt: {
-      pt: "Página inicial da Vikings League, com chamada de inscrição para a competição de EA FC Pro Clubs e destaques das equipes.",
-      en: "Vikings League home page, with the EA FC Pro Clubs competition sign-up call and team highlights.",
-    },
-    context: {
-      pt: "Plataforma de competição para EA FC Pro Clubs. Reúne divulgação, inscrições, avaliação estatística e finais transmitidas.",
-      en: "A competition platform for EA FC Pro Clubs: promotion, sign-ups, statistical rating and broadcast finals.",
-    },
-    role: {
-      pt: "Idealização, design, desenvolvimento e publicação do zero.",
-      en: "Concept, design, development and release, from zero.",
-    },
-    decision: {
-      pt: "Concentrar inscrição, competição e estatísticas em uma única experiência.",
-      en: "Concentrate sign-up, competition and statistics in a single experience.",
-    },
-    outcome: {
-      pt: "Fluxo completo da competição reunido em uma plataforma.",
-      en: "The full competition flow gathered in one platform.",
-    },
-    stack: ["Next.js 16", "TypeScript", "Tailwind CSS", "Motion"],
-    links: [
-      { label: { pt: "código no GitHub", en: "code on GitHub" }, url: "https://github.com/pedruamerico/vikings-league", primary: true },
-    ],
-  },
-  {
     id: "spotar",
-    index: "02",
+    index: "01",
     kicker: { pt: "MARKETPLACE", en: "MARKETPLACE" },
     title: "Spotar",
     image: "/projects/spotar.webp",
@@ -151,7 +120,7 @@ export const projects = [
   },
   {
     id: "log-pose",
-    index: "03",
+    index: "02",
     kicker: { pt: "APLICATIVO WINDOWS", en: "WINDOWS APP" },
     title: "Log Pose",
     image: "/projects/logpose.webp",

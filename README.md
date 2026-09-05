@@ -9,7 +9,7 @@ product to production: application development, CI/CD and cluster operations.
 
 - Products available for hire (landing pages, SaaS, desktop apps, APIs, infra)
 - Build / Deliver / Operate: how the work is organized
-- Selected projects: Vikings League, Spotar and Log Pose
+- Selected projects: Spotar and Log Pose
 - Stack grouped by role
 - Career path and contact channels
 

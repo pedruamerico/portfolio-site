@@ -126,14 +126,10 @@
 .pa-projects-link[data-primary]:hover { color: var(--pa-acc-text); }
 .pa-projects-text > .pa-projects-link { margin-top: 20px; }
 
-/* A moldura é a mesma nos três; o que varia é a divisão das colunas e o lado
+/* A moldura é a mesma nos dois; o que varia é a divisão das colunas e o lado
    em que o texto entra. */
 
-/* ---- 01 Vikings League: texto estreito à esquerda ---- */
-[data-variant='vikings-league'] .pa-projects-text { grid-column: 1 / 5; }
-[data-variant='vikings-league'] .pa-projects-visual { grid-column: 5 / 13; }
-
-/* ---- 02 Spotar: imagem à esquerda, texto na coluna estreita da direita ---- */
+/* ---- 01 Spotar: imagem à esquerda, texto na coluna estreita da direita ---- */
 [data-variant='spotar'] { align-items: end; }
 [data-variant='spotar'] .pa-projects-visual { grid-column: 1 / 9; grid-row: 1; }
 [data-variant='spotar'] .pa-projects-text { grid-column: 9 / 13; grid-row: 1; }
@@ -141,7 +137,7 @@
 [data-variant='spotar'] .pa-projects-context { margin-top: 18px; max-width: none; }
 [data-variant='spotar'] .pa-projects-meta-list { margin-top: 24px; gap: 14px; }
 
-/* ---- 03 Log Pose: texto mais largo, imagem em 7 colunas ---- */
+/* ---- 02 Log Pose: texto mais largo, imagem em 7 colunas ---- */
 [data-variant='log-pose'] .pa-projects-text { grid-column: 1 / 6; }
 [data-variant='log-pose'] .pa-projects-visual { grid-column: 6 / 13; }
 [data-variant='log-pose'] .pa-projects-title { font-size: clamp(38px, 5.4vw, 80px); }
